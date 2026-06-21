@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>K8凯发 · 资料整理与索引</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #faf9f7;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            color: #2c2b28;
+            line-height: 1.6;
+            padding: 2rem 1.2rem;
+        }
+
+        .page {
+            max-width: 720px;
+            margin: 0 auto;
+        }
+
+        /* ---- 标头 / hero ---- */
+        .hero {
+            margin-bottom: 3rem;
+            text-align: left;
+            border-bottom: 1px solid #e1dfda;
+            padding-bottom: 1.8rem;
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            color: #1f1e1b;
+            margin-bottom: 0.4rem;
+        }
+
+        .hero .sub {
+            font-size: 0.95rem;
+            color: #7a7772;
+            border-left: 3px solid #b5b0a8;
+            padding-left: 1rem;
+        }
+
+        /* ---- 说明区 / 简介 ---- */
+        .intro {
+            margin-bottom: 2.8rem;
+            background: #ffffff;
+            padding: 1.8rem 2rem;
+            border-radius: 20px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.02), 0 0 0 1px #f0ede8;
+        }
+
+        .intro p {
+            margin-bottom: 1.2rem;
+            font-size: 1rem;
+        }
+
+        .intro p:last-child {
+            margin-bottom: 0;
+        }
+
+        .intro a {
+            color: #2b5f5a;
+            text-decoration: underline 1.5px dotted #a3c2bd;
+            text-underline-offset: 4px;
+            font-weight: 500;
+            transition: text-decoration-color 0.2s;
+        }
+
+        .intro a:hover {
+            text-decoration-color: #1b4a45;
+        }
+
+        /* ---- 目录感布局：卡片网格 ---- */
+        .section-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #6b6761;
+            margin-bottom: 1.2rem;
+            border-top: 1px solid #e1dfda;
+            padding-top: 2rem;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 1.4rem 1.2rem;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.02), 0 0 0 1px #f0ede8;
+            transition: box-shadow 0.2s;
+        }
+
+        .card:hover {
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03), 0 0 0 1px #d9d4cc;
+        }
+
+        .card h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #1f1e1b;
+            margin-bottom: 0.3rem;
+        }
+
+        .card p {
+            font-size: 0.88rem;
+            color: #5b5852;
+        }
+
+        .card .tag {
+            display: inline-block;
+            margin-top: 0.6rem;
+            font-size: 0.75rem;
+            color: #8a857d;
+            background: #f2efe9;
+            padding: 0.1rem 0.7rem;
+            border-radius: 30px;
+        }
+
+        /* ---- 提示区 ---- */
+        .notice-area {
+            background: #f3f1ed;
+            border-radius: 20px;
+            padding: 1.6rem 1.8rem;
+            margin-bottom: 2.5rem;
+            border-left: 5px solid #c0b9ae;
+        }
+
+        .notice-area h2 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #2f2c27;
+        }
+
+        .notice-area ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .notice-area li {
+            font-size: 0.92rem;
+            color: #403d38;
+            padding: 0.25rem 0;
+            padding-left: 1.2rem;
+            position: relative;
+        }
+
+        .notice-area li::before {
+            content: "·";
+            position: absolute;
+            left: 0.2rem;
+            color: #8f8a82;
+            font-weight: bold;
+        }
+
+        /* ---- 相关信息区 / FAQ 摘要 ---- */
+        .info-area {
+            margin-bottom: 2.8rem;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #e7e4de;
+            padding: 1rem 0;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-q {
+            font-weight: 600;
+            font-size: 0.98rem;
+            color: #1f1e1b;
+            margin-bottom: 0.3rem;
+        }
+
+        .faq-a {
+            font-size: 0.9rem;
+            color: #595650;
+            padding-left: 0.8rem;
+            border-left: 2px solid #dad5cd;
+        }
+
+        .faq-a a {
+            color: #2b5f5a;
+            text-decoration: underline 1px dotted #a3c2bd;
+            text-underline-offset: 3px;
+        }
+
+        /* ---- 页脚 ---- */
+        .footer-note {
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #e1dfda;
+            font-size: 0.8rem;
+            color: #8e8a83;
+            text-align: center;
+            letter-spacing: 0.02em;
+        }
+
+        /* ---- 响应式 ---- */
+        @media (max-width: 540px) {
+            .card-grid {
+                grid-template-columns: 1fr;
+                gap: 0.9rem;
+            }
+
+            .hero h1 {
+                font-size: 1.7rem;
+            }
+
+            .intro {
+                padding: 1.2rem 1.2rem;
+            }
+
+            .notice-area {
+                padding: 1.2rem 1.2rem;
+            }
+        }
+
+        @media (max-width: 380px) {
+            body {
+                padding: 1.2rem 0.8rem;
+            }
+            .card {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <!-- hero -->
+    <div class="hero">
+        <h1>资料索引 · 信息整理</h1>
+        <div class="sub">从碎片到目录，保持对内容的直觉</div>
+    </div>
+
+    <!-- 说明区：自然嵌入链接 -->
+    <div class="intro">
+        <p>
+            平时接触的信息多了，总需要一处能顺手查阅、分类归拢的地方。
+            这个页面围绕 <a href="https://webs-k8.com">K8凯发</a> 整理了一些基础资料和索引方向，
+            不是百科，更像一个笔记架——把零散的知识点按模块放好，方便自己回头翻。
+        </p>
+        <p>
+            目前整理了四个主要模块：平台基础、常见术语、使用场景和资源参考。
+            每个模块里还会继续补充条目，适合日常快速检索。
+        </p>
+    </div>
+
+    <!-- 目录感卡片 -->
+    <div class="section-title">📁 整理模块</div>
+    <div class="card-grid">
+        <div class="card">
+            <h3>平台基础</h3>
+            <p>包括界面导览、账户功能、权限说明等基本框架。</p>
+            <span class="tag">6 条目</span>
+        </div>
+        <div class="card">
+            <h3>术语速查</h3>
+            <p>常见关键词、缩写、内部叫法，方便理解上下文。</p>
+            <span class="tag">12 条目</span>
+        </div>
+        <div class="card">
+            <h3>使用场景</h3>
+            <p>不同需求下的操作路径、典型案例、流程备忘。</p>
+            <span class="tag">8 条目</span>
+        </div>
+        <div class="card">
+            <h3>资源参考</h3>
+            <p>外部文档、工具链接、相关文章与数据来源。</p>
+            <span class="tag">5 条目</span>
+        </div>
+    </div>
+
+    <!-- 提示区 -->
+    <div class="notice-area">
+        <h2>💡 日常使用提示</h2>
+        <ul>
+            <li>每个模块持续更新，建议定期浏览变化</li>
+            <li>如果发现信息遗漏或错误，可以记下来后续补充</li>
+            <li>部分资源来自外部，使用时留意来源与时效</li>
+            <li>自定义标签和备注功能正在规划中</li>
+        </ul>
+    </div>
+
+    <!-- 相关信息区 / FAQ 摘要 -->
+    <div class="section-title">❓ 常见问题摘要</div>
+    <div class="info-area">
+        <div class="faq-item">
+            <div class="faq-q">这个索引主要面向谁？</div>
+            <div class="faq-a">给自己和身边需要快速查阅 <a href="https://webs-k8.com">K8凯发</a> 相关资料的人，偏向整理向，不做深度教程。</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">内容多久更新一次？</div>
+            <div class="faq-a">看资料收集节奏，一般一两周会补充一次，重要的变动会及时调整。</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">可以提补充建议吗？</div>
+            <div class="faq-a">当然，目前通过页面底部或相关渠道反馈就好，会定期查看。</div>
+        </div>
+    </div>
+
+    <!-- 页脚 -->
+    <div class="footer-note">
+        信息整理 · 持续迭代 &nbsp;|&nbsp; 保持简单
+    </div>
+</div>
+</body>
+</html>
